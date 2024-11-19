@@ -59,7 +59,7 @@ p {
   /* margin-top: 10px; */
   text-align: right;
   color: #2e2e2e;
-  background-color: #eaadad;
+  background-color: #f4d6d6;
 }
 
 #topInfo li {
@@ -1347,7 +1347,7 @@ a {
 
 .site-navigation a{
   /* padding: 15px 0; */
-  margin-left: 35px;
+  margin-left: 25px;
   font-size: 20px;
   text-decoration: none;
   font-weight: 500;
