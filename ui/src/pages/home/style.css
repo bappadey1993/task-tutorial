@@ -50,15 +50,16 @@ p {
 }
 
 #topHeader {
-  padding: 1em 4em;
+  /* padding: 1em 1em; */
   font-family: roboto;
 }
 
 #topInfo {
   padding: 0;
-  margin-top: 10px;
+  /* margin-top: 10px; */
   text-align: right;
   color: #2e2e2e;
+  background-color: #eaadad;
 }
 
 #topInfo li {
@@ -77,11 +78,11 @@ p {
 }
 
 nav {
-  padding: 18px 0;
+  /* padding: 18px 0; */
 }
 
 .mainMenu {
-  float: right;
+  /* float: right; */
 }
 
 .mainMenu a {
@@ -1307,4 +1308,89 @@ a#gotop {
   .slider img {
     height: 180px;
   }
+}
+
+
+/* ----------------------------------Site Header------------------------------- */
+body {
+  font-family: Helvetica;
+  margin: 0;
+}
+a {
+  text-decoration: none;
+  color: #000;
+}
+.site-header { 
+  background: #b1afcd;
+  border-bottom: 1px solid #ccc;
+  padding: .5em 1em;
+  display: flex;
+  justify-content: space-between;
+}
+
+.site-header a {
+  /* padding: 15px 0; */
+  margin-left: 35px;
+  font-size: 20px;
+  text-decoration: none;
+  font-weight: 500;
+  color: #2e2e2e;
+  position: relative;
+  transition: all 0.3s ease-in-out;
+}
+
+.site-identity h1 {
+  font-size: 1.5em;
+  /* margin: .6em 0; */
+  display: inline-block;
+}
+
+.site-navigation a{
+  /* padding: 15px 0; */
+  margin-left: 35px;
+  font-size: 20px;
+  text-decoration: none;
+  font-weight: 500;
+  color: #2e2e2e;
+  position: relative;
+  transition: all 0.3s ease-in-out;
+}
+
+.mainMenu a:after {
+    top: 40px;
+    content: "";
+    display: block;
+    height: 2px;
+    left: 50%;
+    position: absolute;
+    width: 0;
+    background: #ef4b42;
+    transition: width 0.3s ease 0s, left 0.3s ease 0s;
+}
+
+.site-navigation ul, 
+.site-navigation li {
+  margin: 0; 
+  padding: 0;
+}
+
+.site-navigation li {
+  display: inline-block;
+  margin: 0 1em 0em 1em;
+}
+
+.site-navigation a:hover, .site-navigation a:focus {
+  color: #ef4b42;
+}
+
+.site-navigation a:after {
+  top: 40px;
+  content: "";
+  display: block;
+  height: 2px;
+  left: 50%;
+  position: absolute;
+  width: 0;
+  background: #ef4b42;
+  transition: width 0.3s ease 0s, left 0.3s ease 0s;
 }
