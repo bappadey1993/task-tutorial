@@ -49,7 +49,6 @@ export default function UpdateStudent() {
       });
   }, [id]);
   return (
-    <div>
       <div className="content-section">
         <h2>Update Student</h2>
         <form onSubmit={handleUpdate}>
@@ -109,6 +108,5 @@ export default function UpdateStudent() {
           </button>
         </form>
       </div>
-    </div>
   );
 }

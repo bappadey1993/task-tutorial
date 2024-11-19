@@ -12,6 +12,9 @@ import Student from "./pages/Students/Student";
 import UpdateStudent from "./pages/Students/UpdateStudent";
 import Home from "./pages/home/Home";
 import $ from 'jquery';
+import Header from "./pages/home/Header";
+import Login from "./pages/login/Login";
+import Register from "./pages/login/Register";
 
 const darkTheme = createTheme({
   palette: {
@@ -50,15 +53,21 @@ export default function App() {
     //     <Task task={task} key={task.id} fetchTasks={fetchTasks} />
     //   ))}
     // </ThemeProvider>
+    <>
+      <BrowserRouter>
+      <Header />
+        <Routes>
+          <Route path="/" element={<Home />}></Route>
+          <Route path="/student" element={<Students />}></Route>
+          <Route path="/create-student" element={<CreateStudent />}></Route>
+          <Route path="/student/:id" element={<Student />}></Route>
+          <Route path="/student-edit/:id" element={<UpdateStudent />}></Route>
+          <Route path="/login" element={<Login />}></Route>
+          <Route path="/register" element={<Register />}></Route>
 
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Home />}></Route>
-        <Route path="/student" element={<Students />}></Route>
-        <Route path="/create-student" element={<CreateStudent />}></Route>
-        <Route path="/student/:id" element={<Student />}></Route>
-        <Route path="/student-edit/:id" element={<UpdateStudent />}></Route>
-      </Routes>
-    </BrowserRouter>
+        </Routes>
+      </BrowserRouter>
+    </>
+    
   );
 }
