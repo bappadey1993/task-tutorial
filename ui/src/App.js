@@ -10,6 +10,8 @@ import Students from "./pages/Students/Students";
 import CreateStudent from "./pages/Students/CreateStudent";
 import Student from "./pages/Students/Student";
 import UpdateStudent from "./pages/Students/UpdateStudent";
+import Home from "./pages/home/Home";
+import $ from 'jquery';
 
 const darkTheme = createTheme({
   palette: {
@@ -51,6 +53,7 @@ export default function App() {
 
     <BrowserRouter>
       <Routes>
+        <Route path="/" element={<Home />}></Route>
         <Route path="/student" element={<Students />}></Route>
         <Route path="/create-student" element={<CreateStudent />}></Route>
         <Route path="/student/:id" element={<Student />}></Route>
