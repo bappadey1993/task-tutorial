@@ -1,12 +1,19 @@
 import express from "express";
 import mysql from "mysql";
 import cors from "cors";
+import connectDB from "./db.js";
+import dotenv from 'dotenv';
+dotenv.config()
+const port = process.env.PORT || 8081;
 
 const app = express();
 app.use(cors());
-const port = 8081;
+// const port = 8081;
 
 app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+
+connectDB();
 
 const db = mysql.createConnection({
   host: "localhost",
@@ -65,5 +72,5 @@ app.delete('/student-delete/:id', (req,res)=> {
 });
 
 app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`);
+  console.log(`Local server app listening on port: ${port}`);
 });

@@ -75,7 +75,7 @@ export default function Home() {
                       <td>
                         <button
                           onClick={() => handleDelete(student.id)}
-                          className="btn btn-sm btn-danger"
+                          className="btn btn-danger"
                         >
                           Delete
                         </button>
