@@ -3,7 +3,7 @@ const config = {
     // user: process.env.USER,
     // password: process.env.PASSWORD,
     // database: process.env.DATABASE,
-
+    connectionLimit: 10,
     host: process.env.HOST || "localhost",
     user: process.env.USER || "root",
     password: process.env.PASSWORD || "",

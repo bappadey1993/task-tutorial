@@ -29,8 +29,8 @@ export default function Home() {
 
   return (
     <>
-      <div class="container-fluid d-flex justify-content-center align-items-center">
-        <div class="row text-center d-flex align-items-center">
+      <div className="container-fluid d-flex justify-content-center align-items-center">
+        <div className="row text-center d-flex align-items-center">
           <div className="home-panel container-fluid">
             <button className="d-flex flex-row">
               <Link to="/create-student">Create +</Link>

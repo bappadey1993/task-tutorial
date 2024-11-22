@@ -5,6 +5,7 @@ import config from './config.js';
 
 const connectDB = async () => {
 // function connectDB = async () => {
+  // console.log('db.js=> ',config)
   const pool = mysql.createPool(config);
 
   pool.getConnection((err, connection) => {
@@ -12,7 +13,7 @@ const connectDB = async () => {
       console.log({ error: err.message });
     }
 
-    console.log("Connected to MySQL database successfully");
+    console.log("Connected to MySQL database successfully - base");
     // connection.release();
   });
 };

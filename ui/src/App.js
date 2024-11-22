@@ -41,9 +41,9 @@ export default function App() {
   //   }
   // };
 
-  useEffect(() => {
-    // fetchTasks();
-  }, []);
+  // useEffect(() => {
+  //   fetchTasks();
+  // }, []);
 
   return (
     // <ThemeProvider theme={darkTheme}>
