@@ -1,5 +1,6 @@
 import express from "express";
 import mysql from "mysql";
+// const mysql = require('mysql2/promise');
 import cors from "cors";
 // import connectDB from "./db.js";
 import dotenv from "dotenv";
@@ -7,7 +8,7 @@ dotenv.config();
 const port = process.env.PORT || 8081;
 import { checkConnection } from './config/db.js';
 import createAllTable from './utils/dbUtils.js';
-// import "./utils/dbUtils.js"
+import authRoutes from './routes/authRoutes.js'
 
 const app = express();
 app.use(cors());
@@ -15,8 +16,9 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-// connectDB();
+app.use('/api/auth', authRoutes); // Use user routes for API calls
 
+// connectDB();
 const db = mysql.createConnection({
   host: "localhost",
   user: "root",
@@ -25,7 +27,7 @@ const db = mysql.createConnection({
 });
 
 app.get("/", (req, res) => {
-  const sql = "SELECT * FROM student";
+  const sql = "SELECT * FROM students";
   db.query(sql, (err, result) => {
     if (err) return res.json({ Message: "Error inside server.." });
     // console.log("server console", result);
@@ -34,7 +36,7 @@ app.get("/", (req, res) => {
 });
 
 app.post("/add-student", (req, res) => {
-  const sql = "INSERT INTO student (`name`,`email`,`phone`) VALUES (?)";
+  const sql = "INSERT INTO students (`name`,`email`,`phone`) VALUES (?)";
   const Values = [req.body.name, req.body.email, req.body.phone];
 
   // console.log(Values)
@@ -48,7 +50,7 @@ app.post("/add-student", (req, res) => {
 // Read student
 app.get("/student/:id", (req, res) => {
   const id = req.params.id;
-  const sql = `SELECT * FROM student WHERE ID = ?`;
+  const sql = `SELECT * FROM students WHERE ID = ?`;
   db.query(sql, id, (err, result) => {
     if (err)
       return res.json({ Message: `Error inside server with error: ${err}` });
@@ -57,7 +59,7 @@ app.get("/student/:id", (req, res) => {
 });
 
 app.put("/student-edit/:id", (req, res) => {
-  const sql = "UPDATE student SET `name`=?, `email`=?, `phone`=? WHERE id = ? ";
+  const sql = "UPDATE students SET `name`=?, `email`=?, `phone`=? WHERE id = ? ";
   const id = req.params.id;
   db.query(
     sql,
@@ -71,7 +73,7 @@ app.put("/student-edit/:id", (req, res) => {
 });
 
 app.delete("/student-delete/:id", (req, res) => {
-  const sql = "DELETE FROM student WHERE id = ?";
+  const sql = "DELETE FROM students WHERE id = ?";
   const id = req.params.id;
   db.query(sql, [id], (err, result) => {
     if (err)

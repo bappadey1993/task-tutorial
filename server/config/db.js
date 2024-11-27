@@ -1,6 +1,7 @@
 //Add your database
 // import mysql2 from "mysql2-promise";
-import mysql from "mysql";
+// import mysql from "mysql";
+import mysql from "mysql2/promise";
 import dotenv from "dotenv";
 dotenv.config();
 
@@ -18,6 +19,8 @@ host: process.env.HOST || "localhost",
 user: process.env.USER || "root",
 password: process.env.PASSWORD || "",
 database: process.env.DATABASE || "nodemysqlcrud",
+waitForConnections: true,
+queueLimit: 0
 });
 
 const checkConnection = async () => {
