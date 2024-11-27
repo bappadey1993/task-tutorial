@@ -2,12 +2,13 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
-export default function Home() {
+export default function Students() {
   const [data, setData] = useState([]);
   useEffect(() => {
     axios
       .get("http://localhost:8081/")
       .then((response) => {
+        // console.log('test=>',response.data)
         setData(response.data);
       })
       .catch((error) => {
@@ -47,7 +48,9 @@ export default function Home() {
               </thead>
 
               <tbody>
-                {data.map((student, index) => {
+                
+                {
+                  data.map((student, index) => {
                   return (
                     <tr key={index}>
                       <td>{student.id}</td>
@@ -55,7 +58,6 @@ export default function Home() {
                       <td>{student.email}</td>
                       <td>{student.phone}</td>
                       <td>
-                        {/* <button className="btn btn-sm btn-info">View</button> */}
                         <Link
                           to={`/student/${student.id}`}
                           className="btn btn-sm btn-info"
@@ -64,7 +66,6 @@ export default function Home() {
                         </Link>
                       </td>
                       <td>
-                        {/* <button className="btn btn-sm btn-primary">Edit</button> */}
                         <Link
                           to={`/student-edit/${student.id}`}
                           className="btn btn-sm btn-primary"
@@ -82,7 +83,8 @@ export default function Home() {
                       </td>
                     </tr>
                   );
-                })}
+                })
+              }
               </tbody>
             </table>
           </div>

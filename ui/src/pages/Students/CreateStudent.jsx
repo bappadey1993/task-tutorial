@@ -9,6 +9,8 @@ export default function CreateStudent() {
     name: "",
     email: "",
     phone: "",
+    gender: "",
+    password: ""
   });
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -16,8 +18,8 @@ export default function CreateStudent() {
     axios
       .post("http://localhost:8081/add-student", values)
       .then(res=> {
-        console.log(res);
-        navigate('/student');
+        console.log('res: ', res);
+        // navigate('/student');
       })
       .catch((err) => console.log(err));
   };

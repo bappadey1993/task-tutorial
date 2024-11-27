@@ -13,10 +13,10 @@ export default function Register() {
 
   const validateForm = () => {
     const errors = {};
-    console.log(formValues.name);
+    // console.log(formValues.name);
     if (!formValues.name) {
       errors.name = "Name is required";
-    } 
+    }
     // else if (/^[a-zA-Z]*$/.test(formValues.name)) {
     //   errors.name = "Name is required should be 3-15 characters long and can only contain letters, numbers, and underscores.';";
     // }
@@ -27,7 +27,7 @@ export default function Register() {
     }
     if (!formValues.phone) {
       errors.phone = "Mobile number is required";
-    } 
+    }
     // else if (!/^\d{10}$/.test(formValues.phone)) {
     //   errors.phone = "Mobile number should be 10 digits";
     // }
@@ -44,39 +44,40 @@ export default function Register() {
     // console.log(formValues);
 
     const errors = validateForm();
-    console.log(errors);
+    // console.log(errors);
     if (Object.keys(errors).length === 0) {
-      console.log("form data: ", formValues)
+      try {
+        console.log("form data: ", formValues);
+        axios
+          .post("http://localhost:8081/api/auth/register-user", formValues)
+          .then(response=> {
+            console.log('res: ', response);
+            if (response.data.success) {
+              alert('success');
+              toast.success(response.data.message || "Registration successful!");
+              setFormValues({ name: "", email: "", phone: "", password: "", gender: "" });
+              setFormErrors("");
+            } else {
+              toast.error(response.data.message || "Registration failed!");
+            }
+            // navigate('/student');
+          })
+          .catch((err) => console.log('err: ', err));
+      } catch (error) {
+        console.error("Error during registration:", error);
+        toast.error(
+          error.response.data.message || "Something went wrong. Please try again later."
+        );
+      }
     } else {
       // alert("Form Submission Failed");
       setFormErrors(errors);
     }
-    // try {
-    //   const response = await axios.post(
-    //     "http://localhost:3000/api/auth/register-user",
-    //     formValues
-    //   );
-    //   console.log(response, "res");
-
-    //   if (response.data.success) {
-    //     toast.success(response.data.message || "Registration successful!");
-    //     setFormValues({ username: "", email: "", phone: "", password: "" });
-    //     setFormErrors("");
-    //   } else {
-    //     toast.error(response.data.message || "Registration failed!");
-    //   }
-    // } catch (error) {
-    //   console.error("Error during registration:", error);
-    //   toast.error(
-    //     error.response.data.message ||
-    //       "Something went wrong. Please try again later."
-    //   );
-    // }
   };
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    console.log(name, value)
+    console.log(name, value);
     setFormValues({ ...formValues, [name]: value });
   };
 
@@ -106,7 +107,11 @@ export default function Register() {
                   onChange={handleInputChange}
                 />
               </div>
-              {formErrors.name?<span className="error-message">{formErrors.name}</span>:''}
+              {formErrors.name ? (
+                <span className="error-message">{formErrors.name}</span>
+              ) : (
+                ""
+              )}
 
               {/* Email */}
               <div className="input-group mb-3">
@@ -122,7 +127,11 @@ export default function Register() {
                   onChange={handleInputChange}
                 />
               </div>
-              {formErrors.email?<span className="error-message">{formErrors.email}</span>:''}
+              {formErrors.email ? (
+                <span className="error-message">{formErrors.email}</span>
+              ) : (
+                ""
+              )}
 
               {/* Phone */}
               <div className="input-group mb-3">
@@ -138,7 +147,11 @@ export default function Register() {
                   onChange={handleInputChange}
                 />
               </div>
-              {formErrors.phone?<span className="error-message">{formErrors.phone}</span>:''}
+              {formErrors.phone ? (
+                <span className="error-message">{formErrors.phone}</span>
+              ) : (
+                ""
+              )}
 
               {/* Gender */}
               <div className="input-group mb-3">
