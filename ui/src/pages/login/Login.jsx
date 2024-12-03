@@ -30,22 +30,16 @@ export default function Login() {
     e.preventDefault();
 
     // Validate form fields
-    // const validationErrors = validateForm();
-    // if (Object.keys(validationErrors).length > 0) {
-    //   setErrors(validationErrors);
-    //   return;
-    // }
+    const validationErrors = validateForm();
+    if (Object.keys(validationErrors).length > 0) {
+      setErrors(validationErrors);
+      return;
+    }
 
     try {
       // Make API request to login
-      const response = await axios.post(
-        "http://localhost:3000/api/auth/login",
-        {
-          email,
-          password,
-        }
-      );
-
+      const response = await axios.post("http://localhost:8081/api/auth/login",{email,password});
+      console.log('response: ', response);
       if (response.data.success) {
         console.log(response);
 
@@ -55,8 +49,8 @@ export default function Login() {
         console.log(token);
 
         sessionStorage.setItem("authToken", token);
-        navigate("/homeScreen");
-        fetchUserDetails();
+        navigate("/dasboard");
+        // fetchUserDetails();
       } else {
         toast.error(response.data.message || "Login failed");
       }

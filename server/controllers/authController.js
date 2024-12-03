@@ -33,7 +33,7 @@ export const register = async (req, res) => {
 
 export const login = async (req, res) => {
     const { email, password } = req.body;
-
+    console.log("login authController email & password:", email, password);
     // Validate required fields
     if (!email || !password) {
         return res.status(400).json({ success: false, message: 'Email and password are required' });
@@ -42,7 +42,7 @@ export const login = async (req, res) => {
     try {
         // Call loginUser function from auth service
         const response = await loginUser(email, password);
-        
+        console.error("login authController:", response);
         if (response.success) {
             return res.status(200).json(response); // Login successful
         } else {

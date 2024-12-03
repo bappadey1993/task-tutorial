@@ -13,7 +13,7 @@ export default function Register() {
 
   const validateForm = () => {
     const errors = {};
-    // console.log(formValues.name);
+    console.log(formValues.name);
     if (!formValues.name) {
       errors.name = "Name is required";
     }
@@ -41,7 +41,6 @@ export default function Register() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     // console.log('Form clicked')
-    // console.log(formValues);
 
     const errors = validateForm();
     // console.log(errors);
@@ -77,7 +76,6 @@ export default function Register() {
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    console.log(name, value);
     setFormValues({ ...formValues, [name]: value });
   };
 

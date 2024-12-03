@@ -15,6 +15,8 @@ import $ from 'jquery';
 import Header from "./pages/home/Header";
 import Login from "./pages/login/Login";
 import Register from "./pages/login/Register";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const darkTheme = createTheme({
   palette: {
@@ -64,8 +66,19 @@ export default function App() {
           <Route path="/student-edit/:id" element={<UpdateStudent />}></Route>
           <Route path="/login" element={<Login />}></Route>
           <Route path="/register" element={<Register />}></Route>
-
         </Routes>
+        <ToastContainer
+          position="top-right"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="colored"
+        />
       </BrowserRouter>
     </>
     
